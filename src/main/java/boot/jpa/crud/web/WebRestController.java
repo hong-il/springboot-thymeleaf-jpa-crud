@@ -27,4 +27,10 @@ public class WebRestController {
     public Long HeroUpdateRequest(@RequestBody HeroUpdateRequestDto dto) {
         return heroService.HeroUpdateRequest(dto);
     }
+
+    @DeleteMapping("/delete")
+    public Long HeroDeleteByIdRequest(@RequestBody Long id) {
+        heroService.HeroDeleteByIdRequest(id);
+        return id;
+    }
 }
