@@ -19,11 +19,11 @@
         </thead>
 
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr th:each="hero : ${list}" th:object="${hero}">
+                <td th:text="*{name}"></td>
+                <td th:text="*{age}"></td>
+                <td th:text="*{note}"></td>
+                <td th:text="*{modifiedDate}"></td>
             </tr>
         </tbody>
     </table>

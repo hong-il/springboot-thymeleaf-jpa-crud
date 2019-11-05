@@ -14,6 +14,7 @@ public class WebController {
 
     @GetMapping("/")
     public String index(Model model) {
+        model.addAttribute("list", heroService.HeroFindAllResponse());
         return "index";
     }
 }
