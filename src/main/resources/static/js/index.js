@@ -27,9 +27,53 @@ index = {
         }).fail(function () {
             alert('Please try again');
         });
+    },
+    findById : function (id) {
+        $.ajax({
+            url: '/find',
+            type: 'post',
+            data: JSON.stringify(id),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8'
+        }).done(function (hero) {
+            $('#updateModal').data('id', id);
+            $('#updateName').val(hero.name);
+            $('#updateAge').val(hero.age);
+            $('#updateNote').val(hero.note);
+        }).fail(function () {
+            alert('Please try again');
+        })
+    },
+    update : function () {
+        var hero = {
+            id: $('#updateModal').data('id'),
+            name: $('#updateName').val(),
+            age: $('#updateAge').val(),
+            note: $('#updateNote').val()
+        };
+
+        $.ajax({
+            url: '/update',
+            type: 'put',
+            data: JSON.stringify(hero),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8'
+        }).done(function () {
+            location.reload();
+        }).fail(function () {
+            alert('Please try again');
+        });
     }
 };
 
 function save() {
     index.save();
+}
+
+function findById(id) {
+    index.findById(id);
+}
+
+function update() {
+    index.update();
 }
